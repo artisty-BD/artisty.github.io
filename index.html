@@ -1,379 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Artisty — Creative Portfolio</title>
-<meta name="description" content="Mehendi, Pic Art, Baking & Creative Works — Artisty" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aristy — Mehendi • Baking • Drawing</title>
+  <meta name="description" content="Aristy - Mehendi Art, Baking & Drawing services. Prices, gallery and order links." />
+  <style>
+    /* Simple, clean responsive styling */
+    :root{--accent:#D97706;--bg:#fff;--muted:#6B7280;--card:#f8fafc;--maxw:1100px}
+    *{box-sizing:border-box}
+    body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#111; background:linear-gradient(180deg,#fff,#fbf7f2)}
+    .container{max-width:var(--maxw);margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:64px;height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;border-radius:12px;font-weight:700;color:var(--accent)}
+    nav a{margin-left:12px;text-decoration:none;color:var(--muted);font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:24px 0}
+    .hero .welcome{font-size:20px;color:var(--muted)}
+    .hero h1{font-size:28px;margin:6px 0}
+    .cta{display:flex;gap:8px;margin-top:12px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:18px 0}
+    .card{background:var(--card);padding:14px;border-radius:12px}
+    .service-title{display:flex;align-items:center;justify-content:space-between}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;background:#eee}
+    .price-list{margin-top:12px}
+    .price-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,0.06)}
+    footer{border-top:1px solid rgba(0,0,0,0.06);padding:18px 0;margin-top:20px;color:var(--muted)}
+    .order-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
+    .socials{display:flex;gap:8px;align-items:center}
 
-<!-- ====== Styles (all in one file) ====== -->
-<style>
-  :root{
-    --bg:#0f1724;
-    --card:#0b1220;
-    --accent:#f59e0b; /* golden accent */
-    --muted:#94a3b8;
-    --glass: rgba(255,255,255,0.04);
-    --radius:14px;
-    --maxw:1100px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,#071226 0%, #07182a 60%);
-    color:#e6eef8;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.5;
-  }
+    /* Hash-page layout */
+    section.page{display:none;padding:10px 0}
+    section.page.active{display:block}
 
-  .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
-
-  /* Header */
-  header.site-header{
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
-    backdrop-filter: blur(6px);
-    border-radius: 18px;
-    padding: 18px;
-    display:flex;
-    gap:18px;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:22px;
-  }
-  .brand{
-    display:flex;gap:14px;align-items:center;
-  }
-  .logo-placeholder{
-    width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#111827,#0b1220);
-    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
-    font-size:18px;
-    border:1px solid rgba(255,255,255,0.04);
-  }
-  .site-title{font-size:20px;font-weight:700}
-  .site-sub{font-size:13px;color:var(--muted)}
-
-  /* Nav */
-  nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-weight:600}
-  nav a:hover{color:var(--accent)}
-
-  /* Hero */
-  .hero{
-    display:grid;
-    grid-template-columns: 1fr 420px;
-    gap:28px;
-    align-items:center;
-    margin-bottom:34px;
-  }
-  .hero-card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-    padding:28px;border-radius:var(--radius);
-    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-    border:1px solid rgba(255,255,255,0.03);
-  }
-  .hero h1{margin:0;font-size:34px;color:#fff}
-  .hero p{color:var(--muted);margin-top:10px;font-size:16px}
-  .hero .cta-row{margin-top:18px;display:flex;gap:12px}
-  .btn{
-    padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;
-    background:var(--accent);color:#071226;
-  }
-  .btn.secondary{
-    background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);
-  }
-
-  /* audio card */
-  .audio-card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-    border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.03);
-  }
-  .audio-controls{display:flex;gap:10px;align-items:center}
-
-  /* Services */
-  .section{margin-bottom:34px}
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-  }
-  .card{
-    background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-    box-shadow: 0 6px 18px rgba(2,6,23,0.5);
-  }
-  .card h3{margin:0 0 8px 0}
-  .muted{color:var(--muted);font-size:14px}
-
-  /* Gallery */
-  .gallery-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;
-  }
-  .thumb{width:100%;height:140px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid transparent}
-  .thumb:focus{outline:none;border-color:rgba(245,158,11,0.5)}
-
-  /* Modal lightbox */
-  .lightbox{
-    position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.8);z-index:1200;
-  }
-  .lightbox img{max-width:92%;max-height:86%;border-radius:10px;box-shadow:0 20px 50px rgba(2,6,23,0.8)}
-
-  /* Contact */
-  .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
-  form input, form textarea{
-    width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;
-  }
-  form button{margin-top:8px}
-
-  /* Footer */
-  footer{opacity:0.9;text-align:center;color:var(--muted);margin-top:34px;padding:18px 0}
-
-  /* Responsive */
-  @media (max-width:920px){
-    .hero{grid-template-columns:1fr}
-    .contact-grid{grid-template-columns:1fr}
-  }
-
-  /* small animation */
-  .fade-up{transform:translateY(12px);opacity:0;transition:all 550ms cubic-bezier(.2,.9,.3,1)}
-  .inview{transform:none;opacity:1}
-</style>
+    /* Responsive */
+    @media(min-width:800px){
+      .hero{grid-template-columns:1fr 360px}
+      .hero h1{font-size:36px}
+    }
+  </style>
 </head>
-
 <body>
   <div class="container">
-
-    <!-- Header -->
-    <header class="site-header">
+    <header>
       <div class="brand">
-        <img src="amar logo.jpg" alt="My logo" style="width:64px;height:64px;border-radius:10p">
-        <!-- Example: <img src="your-logo.png" alt="My logo" style="width:64px;height:64px;border-radius:10p">x -->
-        
         <div>
-          <div class="site-title">Artisty</div>
-          <div class="site-sub">Mehendi • Pic Art • Baking • Creative Works</div>
+          <div style="font-weight:800">Aristy</div>         
         </div>
       </div>
-
-      <nav aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
+      <nav>
+        <a href="#/" data-link>Home</a>
+        <a href="#/mehendi" data-link>Mehendi</a>
+        <a href="#/baking" data-link>Baking</a>
+        <a href="#/drawing" data-link>Drawing</a>
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section id="home" class="hero-card hero">
-      <div>
-        <h1 class="fade-up">Artisty — Creative Works & Handcrafted Art</h1>
-        <p class="fade-up" style="transition-delay:80ms">
-          আমি Mehendi design, customized pic-art, এবং বেকিং—সবই করি। এখানে আমার সেরা কাজগুলো দেখুন এবং অর্ডার করুন।
-        </p>
-
-        <div class="cta-row fade-up" style="transition-delay:140ms">
-          <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">অর্ডার করুন</button>
-          <button class="btn secondary" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">গ্যালারী দেখুন</button>
-        </div>
-
-        <div style="height:12px"></div>
-
-        <div class="grid" style="margin-top:18px">
-          <div class="card fade-up" style="transition-delay:200ms">
-            <h3>🌿 Mehendi Art</h3>
-            <div class="muted">ব্রাইডাল, পার্টি, সিম্পল ডিজাইন — কাস্টম অর্ডার গ্রহণযোগ্য।</div>
-          </div>
-          <div class="card fade-up" style="transition-delay:260ms">
-            <h3>🎨 Pic Art</h3>
-            <div class="muted">Digital portraits, edits, creative photo art & prints.</div>
-          </div>
-          <div class="card fade-up" style="transition-delay:320ms">
-            <h3>🍰 Baking</h3>
-            <div class="muted">কেক, কেকটপস, কুকি—পার্সোনালাইজড অর্ডার।</div>
-          </div>
-        </div>
-      </div>
-      
-        <div style="height:14px"></div>
-      
-        <div class="card">
-          <h3>Quick Info</h3>
-          <div class="muted">
-            ফোন: <strong>+88 01679647694</strong><br>
-            কাজের এলাকা: ঢাকা / সারাদেশে ডেলিভারি
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section id="services" class="section">
-      <h2 style="text-align:center">Services</h2>
-      <div class="grid" style="margin-top:12px">
-        <div class="card">
-          <h3>Bridal Mehendi</h3>
-          <p class="muted">ব্রাইডাল প্যাকেজ — কাস্টম ডিজাইন, ফ্রিংগেস, হাত-পা, ব্যাক ডিজাইন সহ।</p>
-        </div>
-        <div class="card">
-          <h3>Party & Simple Mehendi</h3>
-          <p class="muted">পার্টি বা ছোট ইভেন্টের জন্য সুন্দর এবং দ্রুত ডিজাইন।</p>
-        </div>
-        <div class="card">
-          <h3>Portrait & Pic Art</h3>
-          <p class="muted">ফটোগ্রাফি এডিট, ডিজিটাল পোর্ট্রেইট, কার্টুনাইজেশন।</p>
-        </div>
-        <div class="card">
-          <h3>Baked Goods</h3>
-          <p class="muted">আনন্দ দিন শুরু হোক কেক দিয়ে — পার্সোনালাইজড কেক ও কুকি।</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="section">
-      <h2 style="text-align:center">Gallery — Selected Works</h2>
-      <p class="muted" style="text-align:center;margin-top:8px">নীচের ছবিগুলো তোমার কাজের জায়গায় নিজের ছবি/লিংক দিয়ে রিপ্লেস করে নাও।</p>
-
-      <div class="gallery-grid" style="margin-top:14px" aria-live="polite">
-        <!-- REPLACE src with your own image URLs -->
-        <img class="thumb" tabindex="0" src="https://via.placeholder.com/600x400?text=Mehendi+1" alt="Mehendi 1" onclick="openLight(this.src)">
-        <img class="thumb" tabindex="0" src="https://via.placeholder.com/600x400?text=Pic+Art+1" alt="Pic Art 1" onclick="openLight(this.src)">
-        <img class="thumb" tabindex="0" src="https://via.placeholder.com/600x400?text=Baking+1" alt="Baking 1" onclick="openLight(this.src)">
-        <img class="thumb" tabindex="0" src="https://via.placeholder.com/600x400?text=Craft+1" alt="Craft 1" onclick="openLight(this.src)">
-        <img class="thumb" tabindex="0" src="https://via.placeholder.com/600x400?text=Mehendi+2" alt="Mehendi 2" onclick="openLight(this.src)">
-        <img class="thumb" tabindex="0" src="https://via.placeholder.com/600x400?text=Pic+Art+2" alt="Pic Art 2" onclick="openLight(this.src)">
-      </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLight(event)">
-      <img id="lightImg" src="" alt="Expanded image">
-    </div>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h2 style="text-align:center">Contact / Order</h2>
-      <div class="contact-grid" style="margin-top:12px">
-        <div class="card">
-          <h3>Send a message</h3>
-          <form id="contactForm" onsubmit="submitForm(event)">
-            <input id="name" type="text" placeholder="Your Name" required>
-            <input id="email" type="email" placeholder="Your Email" required>
-            <input id="phone" type="text" placeholder="Phone (optional)">
-            <textarea id="message" rows="5" placeholder="Describe your order / question" required></textarea>
-            <button class="btn" type="submit">Send Message</button>
-            <div id="formNote" class="muted" style="margin-top:8px;font-size:13px">Note: Without backend this opens your email client. You can later hook to Formspree / Google Forms.</div>
-          </form>
-        </div>
-
-        <aside class="card">
-          <h3>Details</h3>
-          <p class="muted">সামান্য কথায়— যেকোন প্রাইজ রিকোয়েস্ট, কাস্টম ডিজাইন, অথবা ডেলিভারি সময় জানতে মেসেজ করুন।</p>
-          <p style="margin-top:12px"><strong>Phone:</strong> +88 01679647694X<br><strong>Email:</strong> digontosikdar1@gmail.com</p>
-          <div style="height:12px"></div>
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
           <div>
-            <strong>Follow</strong>
-            <div class="muted" style="margin-top:8px">Facebook / Instagram / TikTok links রাখো এখানে</div>
+            <div class="welcome">স্বাগতম — Aristy</div>
+            <h1>আর্টিস্টি — প্রফেশনাল মেহেদী, বেকিং ও ড্রয়িং সার্ভিস</h1>
+            <p style="color:var(--muted);max-width:60ch">আমি আপনার অনুষ্ঠানের জন্য কাস্টম মেহেদী ডিজাইন, হোম-বেকড কেক ও পেস্ট্রি, এবং অরিজিনাল আর্ট-ওয়ার্ক তৈরি করি। নিচে প্রতিটি সার্ভিসের জন্য আলাদা পেজ আছে — ক্লিক করে বিস্তারিত দেখুন এবং অর্ডার করুন।</p>
+            <div class="cta">
+              <a class="btn" href="#/mehendi">Mehendi</a>
+              <a class="btn" href="#/baking">Baking</a>
+              <a class="btn ghost" href="#/drawing">Drawing</a>
+            </div>
           </div>
-        </aside>
+
+        <div class="card" style="text-align:center">
+        
+          <div style="margin:12px 0"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS6bWt6SFHd9Y0B8y2HE8JuQ8EeqOSwMDNUg&amp;s" class="sFlh5c FyHeAf" alt="Bin Ibne Baizid" jsname="JuXqh" style="max-width: 1871px; height: 218px; margin: 0px; width: 218px;" data-ilt="1764849819528"> </div>
+		  <div style="color:var(--muted);font-size:30px"><strong> Artisty </strong></div>
+		  <div style="color:var(--muted);font-size:20px"><strong> +8801318557840 </strong></div>
+          <div style="color:var(--muted);font-size:13px;margin-top:10px">Message on : <a href="https://www.facebook.com/share/17hyMPuvWG/">facebook</a></div></div></div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Mehendi</h3>
+          <p style="color:var(--muted)">কাস্টম হাত ও পায়ের মেহেদী ডিজাইন — ছোট, মাঝারি, বড় ইভেন্টের জন্য।</p>
+          <div style="margin-top:12px"><a href="#/mehendi" class="btn">বিস্তারিত দেখুন</a></div>
+        </div>
+
+        <div class="card">
+          <h3>Baking</h3>
+          <p style="color:var(--muted)">কাস্টম কেক, কফি, কুকি ও পেস্ট্রি — ঘরে তৈরি, তাজা।</p>
+          <div style="margin-top:12px"><a href="#/baking" class="btn">বিস্তারিত দেখুন</a></div>
+        </div>
+
+        <div class="card">
+          <h3>Drawing / Art</h3>
+          <p style="color:var(--muted)">ক্রিয়েটিভ পোর্ট্রেট, ওয়াটারকোলার, কাস্টম আর্টওয়ার্ক।</p>
+          <div style="margin-top:12px"><a href="#/drawing" class="btn">বিস্তারিত দেখুন</a></div>
+        </div>
       </div>
+
+      <footer>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>© <strong>Aristy</strong> • All rights reserved</div>
+          <div class="socials">
+            <div style="font-size:13px;color:var(--muted)">Follow:</div>
+            <!-- Replace '#' with your actual social links -->
+            <a href="https://www.facebook.com/share/17hyMPuvWG/" style="text-decoration:none">Facebook</a>
+            <a href="https://www.instagram.com/binibnebaizid?igsh=YnpkdGpqc3d2c2Fp" style="text-decoration:none">Instagram</a>
+            <a href="+8801318557840" style="text-decoration:none">WhatsApp</a>
+          </div>
+        </div>
+      </footer>
     </section>
 
-    <footer>
-      © <span id="year"></span> Artisty — All Rights Reserved
-    </footer>
+    <!-- Mehendi Page -->
+    <section id="mehendi" class="page">
+      <div class="service-title">
+        <h2>Mehendi Art</h2>
+        <div style="color:var(--muted)">সর্বশেষ আপডেট: <span id="meh-last">2025-12-04</span></div>
+      </div>
+      <p style="color:var(--muted)">নিচে প্রতিটি ডিজাইন এর উদাহরণ ছবি ও মূল্য তালিকা আছে। ছবি আপলোড করতে <code>images/mehendi-1.jpg</code> ফাইলে আপনার ছবি রাখুন অথবা এখানে সরাসরি URL বসান।</p>
+
+      <div class="gallery">
+        <!-- Replace src with your image URLs -->
+        <img src="images/mehendi-1.jpg" alt="Mehendi sample 1">
+        <img src="images/mehendi-2.jpg" alt="Mehendi sample 2">
+        <img src="images/mehendi-3.jpg" alt="Mehendi sample 3">
+      </div>
+
+      <div class="price-list">
+        <div class="price-item"><div>Small (Hand simple)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Medium (Half hand)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Large (Full hand)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Bridal (Custom)</div><div>৳ ****</div></div>
+      </div>
+
+      <div class="order-row">
+        <a class="btn" href="https://www.facebook.com/share/17hyMPuvWG/">Order Now</a>
+        <a class="btn ghost" href="#/">Back to Home</a>
+        <div style="margin-left:auto;color:var(--muted);font-size:13px">Page: <strong>Aristy — Mehendi</strong> • Contact: <a href="https://www.facebook.com/share/17hyMPuvWG/">Facebook</a></div>
+      </div>
+
+      <footer>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>© <strong>Aristy</strong></div>
+          <div class="socials">
+            <!-- Put your real social links here -->
+            <a href="https://www.facebook.com/share/17hyMPuvWG/">Facebook</a>
+            <a href="https://www.instagram.com/binibnebaizid?igsh=YnpkdGpqc3d2c2Fp">Instagram</a>
+            <a href="+8801318557840">WhatsApp</a>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Baking Page -->
+    <section id="baking" class="page">
+      <div class="service-title">
+        <h2>Baking</h2>
+        <div style="color:var(--muted)">সর্বশেষ আপডেট: <span id="bake-last">2025-12-04</span></div>
+      </div>
+      <p style="color:var(--muted)">কোনো আইটেমের ছবি যোগ করতে <code>images/bake-1.jpg</code> নামের ফাইল যোগ করুন অথবা নিচে সরাসরি URL বসান।</p>
+
+      <div class="gallery">
+        <img src="images/bake-1.jpg" alt="Baking sample 1">
+        <img src="images/bake-2.jpg" alt="Baking sample 2">
+        <img src="images/bake-3.jpg" alt="Baking sample 3">
+      </div>
+
+      <div class="price-list">
+        <div class="price-item"><div>Small Cake (6 inch)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Medium Cake (8 inch)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Large Cake (10 inch)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Custom Cookies (dozen)</div><div>৳ ****</div></div>
+      </div>
+
+      <div class="order-row">
+        <a class="btn" href="https://www.facebook.com/share/17hyMPuvWG/">Order Now</a>
+        <a class="btn ghost" href="#/">Back to Home</a>
+        <div style="margin-left:auto;color:var(--muted);font-size:13px">Page: <strong>Aristy — Baking</strong> • Contact: <a href="https://www.facebook.com/share/17hyMPuvWG/">Facebook</a></div>
+      </div>
+
+      <footer>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>© <strong>Aristy</strong></div>
+          <div class="socials">
+            <a href="https://www.facebook.com/share/17hyMPuvWG/">Facebook</a>
+            <a href="https://www.instagram.com/binibnebaizid?igsh=YnpkdGpqc3d2c2Fp">Instagram</a>
+            <a href="+8801318557840">WhatsApp</a>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Drawing Page -->
+    <section id="drawing" class="page">
+      <div class="service-title">
+        <h2>Drawing / Art</h2>
+        <div style="color:var(--muted)">সর্বশেষ আপডেট: <span id="draw-last">2025-12-04</span></div>
+      </div>
+      <p style="color:var(--muted)">আপনার কাস্টম আর্টওয়ার্ক—পোর্ট্রেট, ওয়াটারকালার ইত্যাদি। ছবিগুলো যোগ করতে `images/art-1.jpg` ইত্যাদি নাম ব্যবহার করুন।</p>
+
+      <div class="gallery">
+        <img src="images/art-1.jpg" alt="Art sample 1">
+        <img src="images/art-2.jpg" alt="Art sample 2">
+        <img src="images/art-3.jpg" alt="Art sample 3">
+      </div>
+
+      <div class="price-list">
+        <div class="price-item"><div>Sketch (A4)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Watercolor (A4)</div><div>৳ ****</div></div>
+        <div class="price-item"><div>Portrait (Custom size)</div><div>৳ ****</div></div>
+      </div>
+
+      <div class="order-row">
+        <a class="btn" href="https://www.facebook.com/share/17hyMPuvWG/">Order Now</a>
+        <a class="btn ghost" href="#/">Back to Home</a>
+        <div style="margin-left:auto;color:var(--muted);font-size:13px">Page: <strong>Aristy — Drawing</strong> • Contact: <a href="https://www.facebook.com/share/17hyMPuvWG/">Facebook</a></div>
+      </div>
+
+      <footer>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>© <strong>Aristy</strong></div>
+          <div class="socials">
+            <a href="https://www.facebook.com/share/17hyMPuvWG/">Facebook</a>
+            <a href="https://www.instagram.com/binibnebaizid?igsh=YnpkdGpqc3d2c2Fp">Instagram</a>
+            <a href="+8801318557840">WhatsApp</a>
+          </div>
+        </div>
+      </footer>
+    </section>
+
   </div>
 
-  <!-- ====== JavaScript ====== -->
   <script>
-    // basic in-view animation
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('.fade-up').forEach((el,i)=>{
-        setTimeout(()=>el.classList.add('inview'), 80 + i*80);
+    // Simple hash router for single-file multi-page feel
+    const pages = { '/': 'home', '/mehendi':'mehendi', '/baking':'baking', '/drawing':'drawing' };
+    function navigate(){
+      const hash = location.hash.replace('#','') || '/';
+      const pageId = pages[hash] || pages['/'];
+      document.querySelectorAll('section.page').forEach(s=>s.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+    window.addEventListener('hashchange', navigate);
+    window.addEventListener('load', navigate);
+
+    // Clickable nav to set hash
+    document.querySelectorAll('a[data-link]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        location.hash = href.replace('#','');
       });
-      document.getElementById('year').textContent = new Date().getFullYear();
     });
 
-    // LIGHTBOX
-    const lightbox = document.getElementById('lightbox');
-    const lightImg = document.getElementById('lightImg');
-    function openLight(src){
-      lightImg.src = src;
-      lightbox.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLight(e){
-      if(e.target === lightbox) {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-    }
-    // close on ESC
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { lightbox.style.display='none'; document.body.style.overflow=''; } });
-    // AUDIO CONTROLS
-    const audio = document.getElementById('bgAudio');
-    const playBtn = document.getElementById('playBtn');
-    const stopBtn = document.getElementById('stopBtn');
-    const mutChk = document.getElementById('mutChk');
-
-    function toggleAudio(){
-      if(audio.paused){
-        audio.play().then(()=>{ playBtn.textContent='Pause'; }).catch(err=>{
-          // autoplay blocked — inform via console
-          console.log('Autoplay blocked or play failed', err);
-          alert('Play করতে অনুগ্রহ করে ব্রাউজারে Play বাটনে ক্লিক করুন।');
-        });
-      } else {
-        audio.pause();
-        playBtn.textContent = 'Play';
-      }
-      audio.onplay = ()=> playBtn.textContent='Pause';
-      audio.onpause = ()=> playBtn.textContent='Play';
-    }
-    function stopAudio(){
-      audio.pause();
-      audio.currentTime = 0;
-      playBtn.textContent = 'Play';
-    }
-    function toggleMute(checked){
-      audio.muted = checked;
-    }
-
-    // FORM: fallback to mailto
-    function submitForm(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const msg = document.getElementById('message').value.trim();
-      const subject = encodeURIComponent('New order from ' + name);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${msg}`);
-      // open mail client
-      window.location.href = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
-    }
-
-    /* ======= Helpful notes for you (delete comments in prod) =======
-      - Replace logo: change #logoBox div into <img src="your-logo.png" alt="logo" style="width:64px;height:64px;border-radius:10px">
-      - Replace gallery images: change the src attributes of the .thumb images to your own image URLs or local files.
-      - Replace audio file: change the <source src="..."> to your mp3 file path (e.g., "media/intro.mp3")
-      - If you want autoplay (not recommended): audio.autoplay = true; but many browsers block it.
-      - To publish: upload index.html and your assets to GitHub Pages, Netlify, or any hosting.
-    =================================================================== */
+    // Helpful: allow users to replace image src strings easily via a small helper (dev use)
+    /*
+      How to change images:
+      - Put your image files in a folder called `images` next to this HTML file (e.g. images/mehendi-1.jpg)
+      - Or replace the <img src="..."> values above with direct image URLs (e.g. https://example.com/yourimage.jpg)
+    */
   </script>
 </body>
 </html>
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
